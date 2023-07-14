@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:56:02 GMT
+ * Last updated on: Fri, 14 Jul 2023 19:19:52 GMT
  */
 
 
@@ -51,8 +51,7 @@ export class RefWorldsDeltaMongoMapper
         break;
     }
 
-    return {
-      _id: new MongoDB.ObjectId(entity.id),
+    const model: RefWorldsDeltaMongoModel = {
       block_timestamp: entity.blockTimestamp,
       block_number: new MongoDB.Long(entity.blockNumber),
       code: entity.code,
@@ -63,6 +62,12 @@ export class RefWorldsDeltaMongoMapper
       primary_key: new MongoDB.Long(entity.primaryKey),
       present: entity.present,
     };
+
+    if (entity.id && MongoDB.ObjectId.isValid(entity.id)) {
+      model._id =  new MongoDB.ObjectId(entity.id);
+    }
+    
+    return model;
   }
 
   public toEntity(
