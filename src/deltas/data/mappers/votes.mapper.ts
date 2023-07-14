@@ -1,17 +1,17 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:56:02 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { Pair, PairMongoMapper, PairRawMapper } from '@alien-worlds/eosio-contract-types';
 import { Votes  } from "../../domain/entities";
 import { VotesMongoModel, VotesRawModel  } from "../dtos/votes.dto";
 
 // Mongo Mappers
 export class VotesMongoMapper
-  extends MapperImpl<Votes, VotesMongoModel>
+  extends MongoMapper<Votes, VotesMongoModel>
 {
   constructor() {
     super();

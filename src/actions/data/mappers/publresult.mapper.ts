@@ -1,17 +1,17 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:56:02 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { Pair, PairMongoMapper, PairRawMapper, Action, ActionMongoMapper, ActionRawMapper } from '@alien-worlds/eosio-contract-types';
 import { Publresult,  ReferendumData  } from "../../domain/entities";
 import { PublresultMongoModel, PublresultRawModel,  ReferendumDataMongoModel, ReferendumDataRawModel  } from "../dtos/publresult.dto";
 
 // Mongo Mappers
 export class PublresultMongoMapper
-  extends MapperImpl<Publresult, PublresultMongoModel>
+  extends MongoMapper<Publresult, PublresultMongoModel>
 {
   constructor() {
     super();
@@ -39,7 +39,7 @@ export class PublresultMongoMapper
 }
 
 export class ReferendumDataMongoMapper
-  extends MapperImpl<ReferendumData, ReferendumDataMongoModel>
+  extends MongoMapper<ReferendumData, ReferendumDataMongoModel>
 {
   constructor() {
     super();

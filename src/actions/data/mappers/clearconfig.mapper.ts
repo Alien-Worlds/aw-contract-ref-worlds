@@ -1,16 +1,16 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:56:02 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { Clearconfig  } from "../../domain/entities";
 import { ClearconfigMongoModel, ClearconfigRawModel  } from "../dtos/clearconfig.dto";
 
 // Mongo Mappers
 export class ClearconfigMongoMapper
-  extends MapperImpl<Clearconfig, ClearconfigMongoModel>
+  extends MongoMapper<Clearconfig, ClearconfigMongoModel>
 {
   constructor() {
     super();

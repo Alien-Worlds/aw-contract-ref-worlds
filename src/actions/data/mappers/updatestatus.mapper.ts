@@ -1,16 +1,16 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:56:02 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { Updatestatus  } from "../../domain/entities";
 import { UpdatestatusMongoModel, UpdatestatusRawModel  } from "../dtos/updatestatus.dto";
 
 // Mongo Mappers
 export class UpdatestatusMongoMapper
-  extends MapperImpl<Updatestatus, UpdatestatusMongoModel>
+  extends MongoMapper<Updatestatus, UpdatestatusMongoModel>
 {
   constructor() {
     super();

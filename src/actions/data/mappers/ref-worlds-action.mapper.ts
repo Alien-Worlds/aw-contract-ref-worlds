@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:56:02 GMT
  */
 
 
@@ -36,7 +36,7 @@ import { StakeobsvMongoMapper, StakeobsvRawMapper } from "./stakeobsv.mapper";
 import { UpdateconfigMongoMapper, UpdateconfigRawMapper } from "./updateconfig.mapper";
 import { UpdatestatusMongoMapper, UpdatestatusRawMapper } from "./updatestatus.mapper";
 import { VoteMongoMapper, VoteRawMapper } from "./vote.mapper";
-import { MongoDB } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
 import { DataEntityType } from '../../domain/entities/ref-worlds-action';
 import { 
   RefWorldsActionMongoModel,
@@ -70,7 +70,7 @@ import { RefWorldsActionName } from '../../domain/enums';
 
 // Mongo Mapper
 export class RefWorldsActionMongoMapper
-  extends MapperImpl<ContractAction<DataEntityType>, RefWorldsActionMongoModel>
+  extends MongoMapper<ContractAction<DataEntityType>, RefWorldsActionMongoModel>
 {
   public fromEntity(
     entity: ContractAction<DataEntityType>
