@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Wed, 12 Jul 2023 07:08:16 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
@@ -32,13 +32,13 @@ export class DepositsMongoMapper
     const { 
       account,
       deposit,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 
     return Deposits.create(
       account || '',
-      new ExtendedAssetMongoMapper().toEntity(deposit),
+      deposit ? new ExtendedAssetMongoMapper().toEntity(deposit) : ExtendedAsset.getDefault(),
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
     );
@@ -63,7 +63,7 @@ export class DepositsRawMapper
 
     return Deposits.create(
       account || '',
-      new ExtendedAssetRawMapper().toEntity(deposit),
+      deposit ? new ExtendedAssetRawMapper().toEntity(deposit) : ExtendedAsset.getDefault(),
       undefined,
       rest
     );

@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Wed, 12 Jul 2023 07:08:16 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
@@ -25,7 +25,7 @@ export class RefundMongoMapper
   public toEntity(mongoModel: RefundMongoModel): Refund {
     const { 
       account,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 

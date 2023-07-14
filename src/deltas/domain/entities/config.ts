@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Wed, 12 Jul 2023 07:08:16 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
  */
 
 import { Entity, UnknownObject } from "@alien-worlds/api-core";
@@ -97,7 +97,7 @@ export class Config implements Entity {
       allowPerAccountVoting,
       allowVoteType,
       nextReferendumId,
-      id
+      id,
     );
     entity.rest = rest;
 

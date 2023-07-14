@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Wed, 12 Jul 2023 07:08:16 GMT
+ * Last updated on: Fri, 14 Jul 2023 17:07:05 GMT
  */
 
 import { MapperImpl } from '@alien-worlds/api-core';
@@ -26,12 +26,12 @@ export class PublresultMongoMapper
   public toEntity(mongoModel: PublresultMongoModel): Publresult {
     const { 
       ref,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 
     return Publresult.create(
-      new ReferendumDataMongoMapper().toEntity(ref),
+      ref ? new ReferendumDataMongoMapper().toEntity(ref) : ReferendumData.getDefault(),
       _id instanceof MongoDB.ObjectId ? _id.toString() : undefined,
       rest
     );
@@ -114,7 +114,7 @@ export class ReferendumDataMongoMapper
       account_votes,
       expires,
       acts,
-      _id, 
+      _id,
       ...rest
     } = mongoModel;
 
@@ -152,7 +152,7 @@ export class PublresultRawMapper
     } = rawModel;
 
     return Publresult.create(
-      new ReferendumDataRawMapper().toEntity(ref),
+      ref ? new ReferendumDataRawMapper().toEntity(ref) : ReferendumData.getDefault(),
       undefined,
       rest
     );
