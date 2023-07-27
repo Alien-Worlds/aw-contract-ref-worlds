@@ -1,14 +1,14 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 19:19:52 GMT
+ * Last updated on: Thu, 27 Jul 2023 15:05:56 GMT
  */
 
-import { Container, RepositoryImpl } from '@alien-worlds/api-core';
+import { Container, RepositoryImpl } from '@alien-worlds/aw-core';
 import { 
   MongoConfig,
   MongoQueryBuilders, 
   MongoSource,
-} from '@alien-worlds/storage-mongodb';
+} from '@alien-worlds/aw-storage-mongodb';
 
 import { RefWorldsActionMongoMapper } from './actions/data/mappers';
 import { RefWorldsActionMongoSource } from './actions/data/data-sources';
@@ -18,7 +18,7 @@ import { RefWorldsContractServiceImpl } from "./services/ref-worlds-contract.ser
 import { RefWorldsDeltaMongoMapper } from './deltas/data/mappers';
 import { RefWorldsDeltaMongoSource } from './deltas/data/data-sources';
 import { RefWorldsDeltaRepository } from './deltas/domain/repositories';
-import { EosRpcSourceImpl } from '@alien-worlds/eos';
+import { AntelopeRpcSourceImpl } from '@alien-worlds/aw-antelope';
 
 export const setupRefWorldsActionRepository = async (
   mongo: MongoSource | MongoConfig,
@@ -77,12 +77,12 @@ export const setupRefWorldsDeltaRepository = async (
 };
 
 export const setupRefWorldsContractService = (
-  eosRpcSourceImpl: EosRpcSourceImpl,
+  antelopeRpcSourceImpl: AntelopeRpcSourceImpl,
   serviceUrl: string,
   container?: Container
 ): RefWorldsContractService => {
   const service = new RefWorldsContractServiceImpl(
-    eosRpcSourceImpl,
+    antelopeRpcSourceImpl,
     serviceUrl
   );
 

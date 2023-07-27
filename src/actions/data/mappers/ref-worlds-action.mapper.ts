@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 19:19:51 GMT
+ * Last updated on: Thu, 27 Jul 2023 15:05:56 GMT
  */
 
 
@@ -22,7 +22,7 @@ import {
   ContractAction, 
   MapperImpl, 
   parseToBigInt 
-} from '@alien-worlds/api-core';
+} from '@alien-worlds/aw-core';
 
 import { CancelMongoMapper, CancelRawMapper } from "./cancel.mapper";
 import { CleanMongoMapper, CleanRawMapper } from "./clean.mapper";
@@ -36,7 +36,7 @@ import { StakeobsvMongoMapper, StakeobsvRawMapper } from "./stakeobsv.mapper";
 import { UpdateconfigMongoMapper, UpdateconfigRawMapper } from "./updateconfig.mapper";
 import { UpdatestatusMongoMapper, UpdatestatusRawMapper } from "./updatestatus.mapper";
 import { VoteMongoMapper, VoteRawMapper } from "./vote.mapper";
-import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
+import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { DataEntityType } from '../../domain/entities/ref-worlds-action';
 import { 
   RefWorldsActionMongoModel,

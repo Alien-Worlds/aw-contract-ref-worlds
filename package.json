@@ -1,12 +1,12 @@
 {
-  "name": "@alien-worlds/ref-worlds-common",
+  "name": "@alien-worlds/aw-contract-ref-worlds",
   "version": "0.0.6",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
     "build"
   ],
-  "repository": "https://github.com/Alien-Worlds/ref-worlds-common.git",
+  "repository": "https://github.com/Alien-Worlds/aw-contract-ref-worlds.git",
   "author": "Radoslaw Kamysz",
   "license": "MIT",
   "scripts": {
@@ -18,7 +18,6 @@
   "dependencies": {
     "@alien-worlds/api-core": "^0.0.158",
     "@alien-worlds/eos": "^0.0.20",
-    "@alien-worlds/eosio-contract-types": "^1.0.25",
     "@alien-worlds/storage-mongodb": "^0.0.28"
   },
   "devDependencies": {

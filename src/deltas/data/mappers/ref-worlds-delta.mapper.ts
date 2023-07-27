@@ -1,6 +1,6 @@
 /**
  * Auto generated. DO NOT edit manually.
- * Last updated on: Fri, 14 Jul 2023 19:19:52 GMT
+ * Last updated on: Thu, 27 Jul 2023 15:05:56 GMT
  */
 
 
@@ -10,8 +10,8 @@ import {
   Referendums,
   Votes,
 } from '../../domain/entities';
-import { ContractDelta, MapperImpl, parseToBigInt } from '@alien-worlds/api-core';
-import { MongoDB, MongoMapper } from '@alien-worlds/storage-mongodb';
+import { ContractDelta, MapperImpl, parseToBigInt } from '@alien-worlds/aw-core';
+import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { DataEntityType } from '../../domain/entities/ref-worlds-delta';
 import { RefWorldsDeltaMongoModel, RefWorldsDeltaRawModel } from '../dtos';
 import { RefWorldsTableName } from '../../domain/enums';
