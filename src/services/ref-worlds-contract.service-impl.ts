@@ -48,7 +48,7 @@ export class RefWorldsContractServiceImpl
   public async fetchConfig (
     options?: GetTableRowsOptions
   ): Promise<Result<ConfigRawModel[], Error>> {
-    const table_key = 'duration';
+    const table_key = '';
     const tableRowOptions = {
       ...options,
       code: 'ref.worlds',

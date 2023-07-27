@@ -15,11 +15,7 @@
     "build": "./scripts/patch.sh && yarn clean && tsc -b",
     "prepublish": "yarn clean && tsc --project tsconfig.build.json"
   },
-  "dependencies": {
-    "@alien-worlds/api-core": "^0.0.158",
-    "@alien-worlds/eos": "^0.0.20",
-    "@alien-worlds/storage-mongodb": "^0.0.28"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@types/node": "^18.7.14",
