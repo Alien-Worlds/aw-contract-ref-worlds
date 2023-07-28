@@ -15,7 +15,10 @@
     "build": "./scripts/patch.sh && yarn clean && tsc -b",
     "prepublish": "yarn clean && tsc --project tsconfig.build.json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@alien-worlds/aw-antelope": "^0.0.27",
+    "@alien-worlds/aw-core": "^0.0.2"
+  },
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@types/node": "^18.7.14",
