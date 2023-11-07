@@ -3,36 +3,36 @@
  * Last updated on: Thu, 27 Jul 2023 15:05:56 GMT
  */
 
-
-import { 
-  Config,
-  Deposits,
-  Referendums,
-  Votes,
-} from '../../domain/entities';
-import { ContractDelta, MapperImpl, parseToBigInt } from '@alien-worlds/aw-core';
+import { Config, Deposits, Referendums, Votes } from '../../domain/entities';
+import {
+  ContractDelta,
+  MapperImpl,
+  parseToBigInt,
+} from '@alien-worlds/aw-core';
 import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { DataEntityType } from '../../domain/entities/ref-worlds-delta';
 import { RefWorldsDeltaMongoModel, RefWorldsDeltaRawModel } from '../dtos';
 import { RefWorldsTableName } from '../../domain/enums';
-import { ConfigMongoMapper, ConfigRawMapper } from "./config.mapper";
-import { DepositsMongoMapper, DepositsRawMapper } from "./deposits.mapper";
-import { ReferendumsMongoMapper, ReferendumsRawMapper } from "./referendums.mapper";
-import { VotesMongoMapper, VotesRawMapper } from "./votes.mapper";
+import { ConfigMongoMapper, ConfigRawMapper } from './config.mapper';
+import { DepositsMongoMapper, DepositsRawMapper } from './deposits.mapper';
+import {
+  ReferendumsMongoMapper,
+  ReferendumsRawMapper,
+} from './referendums.mapper';
+import { VotesMongoMapper, VotesRawMapper } from './votes.mapper';
 
 // Mongo Mapper
-export class RefWorldsDeltaMongoMapper
-  extends MongoMapper<ContractDelta<DataEntityType>, RefWorldsDeltaMongoModel>
-{
+export class RefWorldsDeltaMongoMapper extends MongoMapper<
+  ContractDelta<DataEntityType>,
+  RefWorldsDeltaMongoModel
+> {
   public fromEntity(
     entity: ContractDelta<DataEntityType>
   ): RefWorldsDeltaMongoModel {
     let entityData;
     switch (entity.table) {
       case RefWorldsTableName.Config:
-        entityData = new ConfigMongoMapper().fromEntity(
-          entity.data as Config
-        );
+        entityData = new ConfigMongoMapper().fromEntity(entity.data as Config);
         break;
       case RefWorldsTableName.Deposits:
         entityData = new DepositsMongoMapper().fromEntity(
@@ -45,15 +45,13 @@ export class RefWorldsDeltaMongoMapper
         );
         break;
       case RefWorldsTableName.Votes:
-        entityData = new VotesMongoMapper().fromEntity(
-          entity.data as Votes
-        );
+        entityData = new VotesMongoMapper().fromEntity(entity.data as Votes);
         break;
     }
 
     const model: RefWorldsDeltaMongoModel = {
       block_timestamp: entity.blockTimestamp,
-      block_number: new MongoDB.Long(entity.blockNumber),
+      block_num: new MongoDB.Long(entity.blockNumber),
       code: entity.code,
       scope: entity.scope,
       table: entity.table,
@@ -64,9 +62,9 @@ export class RefWorldsDeltaMongoMapper
     };
 
     if (entity.id && MongoDB.ObjectId.isValid(entity.id)) {
-      model._id =  new MongoDB.ObjectId(entity.id);
+      model._id = new MongoDB.ObjectId(entity.id);
     }
-    
+
     return model;
   }
 
@@ -91,7 +89,7 @@ export class RefWorldsDeltaMongoMapper
 
     const {
       _id,
-      block_number,
+      block_num,
       code,
       scope,
       table,
@@ -103,7 +101,7 @@ export class RefWorldsDeltaMongoMapper
 
     return new ContractDelta<DataEntityType>(
       _id.toString(),
-      parseToBigInt(block_number),
+      parseToBigInt(block_num),
       code,
       scope,
       table,
@@ -118,8 +116,8 @@ export class RefWorldsDeltaMongoMapper
 
 // Processor Task Mapper
 export class RefWorldsDeltaProcessorTaskMapper extends MapperImpl<
-  ContractDelta<DataEntityType, RefWorldsDeltaRawModel>, 
-    RefWorldsDeltaRawModel
+  ContractDelta<DataEntityType, RefWorldsDeltaRawModel>,
+  RefWorldsDeltaRawModel
 > {
   public fromEntity(
     entity: ContractDelta<DataEntityType, RefWorldsDeltaRawModel>
@@ -147,7 +145,7 @@ export class RefWorldsDeltaProcessorTaskMapper extends MapperImpl<
     }
 
     const {
-      block_number,
+      block_num,
       code,
       scope,
       table,
@@ -159,7 +157,7 @@ export class RefWorldsDeltaProcessorTaskMapper extends MapperImpl<
 
     return new ContractDelta<DataEntityType, RefWorldsDeltaRawModel>(
       '',
-      parseToBigInt(block_number),
+      parseToBigInt(block_num),
       code,
       scope,
       table,
@@ -167,7 +165,7 @@ export class RefWorldsDeltaProcessorTaskMapper extends MapperImpl<
       payer,
       parseToBigInt(primary_key),
       present,
-      block_timestamp,
+      block_timestamp
     );
   }
 }
