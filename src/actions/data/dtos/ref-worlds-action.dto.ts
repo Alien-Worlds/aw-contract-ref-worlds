@@ -14,14 +14,8 @@ import { PublresultMongoModel, PublresultRawModel } from './publresult.dto';
 import { RefundMongoModel, RefundRawModel } from './refund.dto';
 import { RmvexpiredMongoModel, RmvexpiredRawModel } from './rmvexpired.dto';
 import { StakeobsvMongoModel, StakeobsvRawModel } from './stakeobsv.dto';
-import {
-  UpdateconfigMongoModel,
-  UpdateconfigRawModel,
-} from './updateconfig.dto';
-import {
-  UpdatestatusMongoModel,
-  UpdatestatusRawModel,
-} from './updatestatus.dto';
+import { UpdateconfigMongoModel, UpdateconfigRawModel } from './updateconfig.dto';
+import { UpdatestatusMongoModel, UpdatestatusRawModel } from './updatestatus.dto';
 import { VoteMongoModel, VoteRawModel } from './vote.dto';
 
 export type DataDocumentType =
@@ -55,9 +49,9 @@ export type DataRawType =
 export type RefWorldsActionMongoModel = {
   _id?: MongoDB.ObjectId;
   block_timestamp?: Date;
-  block_num?: MongoDB.Long;
+  block_number?: MongoDB.Long;
   global_sequence?: MongoDB.Long;
-  recv_sequence?: MongoDB.Long;
+  receiver_sequence?: MongoDB.Long;
   trx_id?: string;
   action_hash?: string;
   action?: {
@@ -71,10 +65,11 @@ export type RefWorldsActionRawModel = {
   account: string;
   name: string;
   block_timestamp: Date;
-  block_num: string;
+  block_number: string;
   global_sequence: string;
   recv_sequence: string;
   transaction_id: string;
   data: DataRawType;
   [key: string]: unknown;
 };
+

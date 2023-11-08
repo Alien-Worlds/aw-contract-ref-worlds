@@ -3,7 +3,8 @@
  * Last updated on: Thu, 27 Jul 2023 15:05:56 GMT
  */
 
-import {
+
+import { 
   Cancel,
   Clean,
   Clearconfig,
@@ -17,42 +18,27 @@ import {
   Updatestatus,
   Vote,
 } from '../../domain/entities';
-import {
-  ContractAction,
-  MapperImpl,
-  parseToBigInt,
+import { 
+  ContractAction, 
+  MapperImpl, 
+  parseToBigInt 
 } from '@alien-worlds/aw-core';
 
-import { CancelMongoMapper, CancelRawMapper } from './cancel.mapper';
-import { CleanMongoMapper, CleanRawMapper } from './clean.mapper';
-import {
-  ClearconfigMongoMapper,
-  ClearconfigRawMapper,
-} from './clearconfig.mapper';
-import { ExecMongoMapper, ExecRawMapper } from './exec.mapper';
-import { ProposeMongoMapper, ProposeRawMapper } from './propose.mapper';
-import {
-  PublresultMongoMapper,
-  PublresultRawMapper,
-} from './publresult.mapper';
-import { RefundMongoMapper, RefundRawMapper } from './refund.mapper';
-import {
-  RmvexpiredMongoMapper,
-  RmvexpiredRawMapper,
-} from './rmvexpired.mapper';
-import { StakeobsvMongoMapper, StakeobsvRawMapper } from './stakeobsv.mapper';
-import {
-  UpdateconfigMongoMapper,
-  UpdateconfigRawMapper,
-} from './updateconfig.mapper';
-import {
-  UpdatestatusMongoMapper,
-  UpdatestatusRawMapper,
-} from './updatestatus.mapper';
-import { VoteMongoMapper, VoteRawMapper } from './vote.mapper';
+import { CancelMongoMapper, CancelRawMapper } from "./cancel.mapper";
+import { CleanMongoMapper, CleanRawMapper } from "./clean.mapper";
+import { ClearconfigMongoMapper, ClearconfigRawMapper } from "./clearconfig.mapper";
+import { ExecMongoMapper, ExecRawMapper } from "./exec.mapper";
+import { ProposeMongoMapper, ProposeRawMapper } from "./propose.mapper";
+import { PublresultMongoMapper, PublresultRawMapper } from "./publresult.mapper";
+import { RefundMongoMapper, RefundRawMapper } from "./refund.mapper";
+import { RmvexpiredMongoMapper, RmvexpiredRawMapper } from "./rmvexpired.mapper";
+import { StakeobsvMongoMapper, StakeobsvRawMapper } from "./stakeobsv.mapper";
+import { UpdateconfigMongoMapper, UpdateconfigRawMapper } from "./updateconfig.mapper";
+import { UpdatestatusMongoMapper, UpdatestatusRawMapper } from "./updatestatus.mapper";
+import { VoteMongoMapper, VoteRawMapper } from "./vote.mapper";
 import { MongoDB, MongoMapper } from '@alien-worlds/aw-storage-mongodb';
 import { DataEntityType } from '../../domain/entities/ref-worlds-action';
-import {
+import { 
   RefWorldsActionMongoModel,
   RefWorldsActionRawModel,
   CancelMongoModel,
@@ -83,20 +69,23 @@ import {
 import { RefWorldsActionName } from '../../domain/enums';
 
 // Mongo Mapper
-export class RefWorldsActionMongoMapper extends MongoMapper<
-  ContractAction<DataEntityType>,
-  RefWorldsActionMongoModel
-> {
+export class RefWorldsActionMongoMapper
+  extends MongoMapper<ContractAction<DataEntityType>, RefWorldsActionMongoModel>
+{
   public fromEntity(
     entity: ContractAction<DataEntityType>
   ): RefWorldsActionMongoModel {
     let entityData;
     switch (entity.name) {
       case RefWorldsActionName.Cancel:
-        entityData = new CancelMongoMapper().fromEntity(entity.data as Cancel);
+        entityData = new CancelMongoMapper().fromEntity(
+          entity.data as Cancel
+        );
         break;
       case RefWorldsActionName.Clean:
-        entityData = new CleanMongoMapper().fromEntity(entity.data as Clean);
+        entityData = new CleanMongoMapper().fromEntity(
+          entity.data as Clean
+        );
         break;
       case RefWorldsActionName.Clearconfig:
         entityData = new ClearconfigMongoMapper().fromEntity(
@@ -104,7 +93,9 @@ export class RefWorldsActionMongoMapper extends MongoMapper<
         );
         break;
       case RefWorldsActionName.Exec:
-        entityData = new ExecMongoMapper().fromEntity(entity.data as Exec);
+        entityData = new ExecMongoMapper().fromEntity(
+          entity.data as Exec
+        );
         break;
       case RefWorldsActionName.Propose:
         entityData = new ProposeMongoMapper().fromEntity(
@@ -117,7 +108,9 @@ export class RefWorldsActionMongoMapper extends MongoMapper<
         );
         break;
       case RefWorldsActionName.Refund:
-        entityData = new RefundMongoMapper().fromEntity(entity.data as Refund);
+        entityData = new RefundMongoMapper().fromEntity(
+          entity.data as Refund
+        );
         break;
       case RefWorldsActionName.Rmvexpired:
         entityData = new RmvexpiredMongoMapper().fromEntity(
@@ -140,15 +133,17 @@ export class RefWorldsActionMongoMapper extends MongoMapper<
         );
         break;
       case RefWorldsActionName.Vote:
-        entityData = new VoteMongoMapper().fromEntity(entity.data as Vote);
+        entityData = new VoteMongoMapper().fromEntity(
+          entity.data as Vote
+        );
         break;
     }
 
     const model: RefWorldsActionMongoModel = {
       block_timestamp: entity.blockTimestamp,
-      block_num: new MongoDB.Long(entity.blockNumber),
+      block_number: new MongoDB.Long(entity.blockNumber),
       global_sequence: new MongoDB.Long(entity.globalSequence),
-      recv_sequence: new MongoDB.Long(entity.receiverSequence),
+      receiver_sequence: new MongoDB.Long(entity.receiverSequence),
       trx_id: entity.transactionId,
       action: {
         name: entity.name,
@@ -158,7 +153,7 @@ export class RefWorldsActionMongoMapper extends MongoMapper<
     };
 
     if (entity.id && MongoDB.ObjectId.isValid(entity.id)) {
-      model._id = new MongoDB.ObjectId(entity.id);
+      model._id =  new MongoDB.ObjectId(entity.id);
     }
 
     return model;
@@ -234,9 +229,9 @@ export class RefWorldsActionMongoMapper extends MongoMapper<
     const {
       _id,
       block_timestamp,
-      block_num,
+      block_number,
       global_sequence,
-      recv_sequence,
+      receiver_sequence,
       trx_id,
       action,
     } = mongoModel;
@@ -244,13 +239,13 @@ export class RefWorldsActionMongoMapper extends MongoMapper<
     return new ContractAction<DataEntityType>(
       _id.toString(),
       block_timestamp,
-      parseToBigInt(block_num),
+      parseToBigInt(block_number),
       action.account,
       action.name,
       parseToBigInt(global_sequence),
-      parseToBigInt(recv_sequence),
+      parseToBigInt(receiver_sequence),
       trx_id,
-      data
+      data,
     );
   }
 }
@@ -272,10 +267,14 @@ export class RefWorldsActionProcessorTaskMapper extends MapperImpl<
     let data;
     switch (rawModel.name) {
       case RefWorldsActionName.Cancel:
-        data = new CancelRawMapper().toEntity(rawModel.data as CancelRawModel);
+        data = new CancelRawMapper().toEntity(
+          rawModel.data as CancelRawModel
+        );
         break;
       case RefWorldsActionName.Clean:
-        data = new CleanRawMapper().toEntity(rawModel.data as CleanRawModel);
+        data = new CleanRawMapper().toEntity(
+          rawModel.data as CleanRawModel
+        );
         break;
       case RefWorldsActionName.Clearconfig:
         data = new ClearconfigRawMapper().toEntity(
@@ -283,7 +282,9 @@ export class RefWorldsActionProcessorTaskMapper extends MapperImpl<
         );
         break;
       case RefWorldsActionName.Exec:
-        data = new ExecRawMapper().toEntity(rawModel.data as ExecRawModel);
+        data = new ExecRawMapper().toEntity(
+          rawModel.data as ExecRawModel
+        );
         break;
       case RefWorldsActionName.Propose:
         data = new ProposeRawMapper().toEntity(
@@ -296,7 +297,9 @@ export class RefWorldsActionProcessorTaskMapper extends MapperImpl<
         );
         break;
       case RefWorldsActionName.Refund:
-        data = new RefundRawMapper().toEntity(rawModel.data as RefundRawModel);
+        data = new RefundRawMapper().toEntity(
+          rawModel.data as RefundRawModel
+        );
         break;
       case RefWorldsActionName.Rmvexpired:
         data = new RmvexpiredRawMapper().toEntity(
@@ -319,7 +322,9 @@ export class RefWorldsActionProcessorTaskMapper extends MapperImpl<
         );
         break;
       case RefWorldsActionName.Vote:
-        data = new VoteRawMapper().toEntity(rawModel.data as VoteRawModel);
+        data = new VoteRawMapper().toEntity(
+          rawModel.data as VoteRawModel
+        );
         break;
     }
 
@@ -327,7 +332,7 @@ export class RefWorldsActionProcessorTaskMapper extends MapperImpl<
       account,
       name,
       block_timestamp,
-      block_num,
+      block_number,
       global_sequence,
       recv_sequence,
       transaction_id,
@@ -336,7 +341,7 @@ export class RefWorldsActionProcessorTaskMapper extends MapperImpl<
     return new ContractAction<DataEntityType, RefWorldsActionRawModel>(
       '',
       block_timestamp,
-      parseToBigInt(block_num),
+      parseToBigInt(block_number),
       account,
       name,
       parseToBigInt(global_sequence),
